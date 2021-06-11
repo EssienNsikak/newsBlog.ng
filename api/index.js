@@ -4,6 +4,7 @@ const dotenv  = require('dotenv');
 const mongoose = require('mongoose');
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/users');
+const postRoute = require('./routes/posts');
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/users', userRoute);
+app.use('/api/v1/posts', postRoute);
 
 PORT = process.env.PORT
 

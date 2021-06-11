@@ -17,7 +17,7 @@ router.get('/all-users', async (req, res) => {
 // View User
 router.get('/:id', async (req, res) => {
     try {
-        const user = await User.findById({ _id: req.params.id });
+        const user = await User.findById(req.params.id);
         !user && res.status(404).json('User not found!')
 
         const { password, ...others } = user._doc;
