@@ -1,7 +1,20 @@
+import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import Axios from 'axios';
 import "./sidebar.css";
 
 export default function SideBar() {
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCats = async () => {
+      const res = await Axios.get('http://localhost:5000/api/categories')
+      setCategories(res.data)
+    }
+    fetchCats()
+  }, []);
+
   return (
     <div className="sidebar">
       <div className="sidebarItem">
@@ -17,36 +30,15 @@ export default function SideBar() {
       <div className="sidebarItem">
         <span className="sidebarTitle">CATEGORIES</span>
         <ul className="sidebarList">
-          <li className="sidebarListItem">
-            <Link className="link" to="/posts?cat=Lifestyle">
-              Lifestyle
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link className="link" to="/posts?cat=Music">
-              Music & Movies
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link className="link" to="/posts?cat=Sport">
-              Sport
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link className="link" to="/posts?cat=Politics">
-              Politics
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link className="link" to="/posts?cat=Tech">
-              Tech
-            </Link>
-          </li>
-          <li className="sidebarListItem">
-            <Link className="link" to="/posts?cat=News">
-              News
-            </Link>
-          </li>
+          {
+            categories.map((c) => (
+              <li className="sidebarListItem">            
+                <Link className="link" to="/posts?cat=Lifestyle">
+                  {c.name}
+                </Link>
+              </li>                
+            ))
+          }
         </ul>
       </div>
       <div className="sidebarItem">
