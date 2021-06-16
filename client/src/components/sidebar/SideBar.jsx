@@ -33,7 +33,7 @@ export default function SideBar() {
           {
             categories.map((c) => (
               <li className="sidebarListItem">            
-                <Link className="link" to="/posts?cat=Lifestyle">
+                <Link to={`/?cat=${c.name}`} className="link">
                   {c.name}
                 </Link>
               </li>                

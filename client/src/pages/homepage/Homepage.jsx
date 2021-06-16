@@ -10,16 +10,17 @@ export default function Homepage() {
 
   const [posts, setPosts] = useState([]);
 
+  const { search } = useLocation();
+  
+
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await Axios.get('http://localhost:5000/api/posts/all-posts')
+      const res = await Axios.get('http://localhost:5000/api/posts/all-posts' + search)
       setPosts(res.data)
     }
     fetchPosts()
-  }, [])
+  }, [search])
 
-  const location = useLocation();
-  console.log(location);
   return (
     <>
       <Header />
