@@ -1,15 +1,16 @@
 import './header.css';
+import Picture from '../../assets/uyo3.jpg';
 
 export default function Header() {
   return (
     <div className="header">
       <div className="headerTitles">
         <span className="headerTitleSm">News & More</span>
-        <span className="headerTitleLg">News.ng</span>
+        <span className="headerTitleLg">News<span className='headerTitleLg2'>.ng</span></span>
       </div>
       <img
         className='headerImg'
-        src="https://hotels.ng/travel/content/images/2016/02/Akwa-ibom.JPG?rw=1281&rh=669"
+        src={ Picture }
         alt=""
       />
     </div>
